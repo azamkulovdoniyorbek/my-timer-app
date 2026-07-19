@@ -1,0 +1,3136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- =========================================================
+        Productivity Dashboard & Advanced Pomodoro Engine
+        Part 1A-1
+        File: index.html
+    ========================================================== -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Productivity Dashboard | Advanced Pomodoro Engine</title>
+
+    <meta
+        name="description"
+        content="Enterprise-grade Productivity Dashboard with Advanced Pomodoro Engine, Focus Stopwatch, XP System, Dynamic Charts and Task Management."
+    >
+
+    <meta
+        name="theme-color"
+        content="#090d16"
+    >
+
+    <!-- Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Icons -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
+
+    <!-- Styles -->
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+<body>
+
+<!-- ==========================================================
+    APP ROOT
+=========================================================== -->
+
+<div id="app">
+
+    <!-- ======================================================
+        Animated Background Layers
+    ======================================================= -->
+
+    <div class="background-engine">
+
+        <div class="background-image-layer"
+             id="backgroundLayer">
+        </div>
+
+        <div class="background-overlay"></div>
+
+        <div class="background-grid"></div>
+
+        <div class="background-gradient"></div>
+
+        <div class="background-noise"></div>
+
+    </div>
+
+    <!-- ======================================================
+        Floating Blur Layer
+    ======================================================= -->
+
+    <div class="glass-overlay"></div>
+
+    <!-- ======================================================
+        Main Layout
+    ======================================================= -->
+
+    <div class="dashboard-layout">
+
+        <!-- ==============================================
+            HEADER
+        =============================================== -->
+
+        <header class="dashboard-header">
+
+            <div class="header-left">
+
+                <div class="logo-wrapper">
+
+                    <div class="logo-glow"></div>
+
+                    <div class="logo-icon">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+
+                </div>
+
+                <div class="brand-content">
+
+                    <h1 class="brand-title">
+                        Productivity Dashboard
+                    </h1>
+
+                    <p class="brand-subtitle">
+                        Advanced Pomodoro Engine • Focus System • Analytics
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- ========================================== -->
+
+            <div class="header-center">
+
+                <div class="focus-status">
+
+                    <span class="status-dot"></span>
+
+                    <span id="sessionState">
+                        Ready To Focus
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- ========================================== -->
+
+            <div class="header-right">
+
+                <!-- XP PANEL -->
+
+                <section
+                    class="xp-panel"
+                    aria-label="User XP Information"
+                >
+
+                    <div class="xp-icon">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+
+                    <div class="xp-content">
+
+                        <span class="xp-label">
+                            Focus XP
+                        </span>
+
+                        <strong id="xpCounter">
+                            0 XP
+                        </strong>
+
+                    </div>
+
+                </section>
+
+                <!-- LEVEL BADGE -->
+
+                <section
+                    class="level-panel"
+                    aria-label="Current User Level"
+                >
+
+                    <div class="level-icon">
+                        <i class="fa-solid fa-crown"></i>
+                    </div>
+
+                    <div class="level-content">
+
+                        <span>
+                            Level
+                        </span>
+
+                        <strong id="levelBadge">
+                            Lv.1
+                        </strong>
+
+                    </div>
+
+                </section>
+
+                <!-- SETTINGS -->
+
+                <button
+                    id="settingsButton"
+                    class="icon-button"
+                    aria-label="Open Settings"
+                >
+
+                    <i class="fa-solid fa-sliders"></i>
+
+                </button>
+
+            </div>
+
+        </header>
+
+        <!-- ==============================================
+            DASHBOARD CONTENT
+        =============================================== -->
+
+        <main class="dashboard-main">
+
+            <!-- ==========================================
+                METRICS
+            =========================================== -->
+
+            <section
+                class="metrics-grid"
+                aria-label="Dashboard Metrics"
+            >
+
+                <!-- ============================== -->
+
+                <article
+                    class="metric-card"
+                    id="weeklyCompletionCard"
+                >
+
+                    <div class="metric-glow"></div>
+
+                    <div class="metric-icon">
+
+                        <i class="fa-solid fa-chart-line"></i>
+
+                    </div>
+
+                    <div class="metric-content">
+
+                        <span class="metric-title">
+                            Weekly Completion
+                        </span>
+
+                        <h2
+                            id="weeklyCompletionValue"
+                            class="metric-value"
+                        >
+                            0%
+                        </h2>
+
+                        <div class="metric-footer">
+
+                            <span class="metric-indicator success">
+
+                                <i class="fa-solid fa-arrow-trend-up"></i>
+
+                                Live
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <!-- ============================== -->
+
+                <article
+                    class="metric-card"
+                    id="burnedTasksCard"
+                >
+
+                    <div class="metric-glow"></div>
+
+                    <div class="metric-icon">
+
+                        <i class="fa-solid fa-fire"></i>
+
+                    </div>
+
+                    <div class="metric-content">
+
+                        <span class="metric-title">
+                            Burned Tasks
+                        </span>
+
+                        <h2
+                            id="burnedTasksValue"
+                            class="metric-value"
+                        >
+                            0
+                        </h2>
+
+                        <div class="metric-footer">
+
+                            <span class="metric-indicator">
+
+                                Completed
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <!-- ============================== -->
+
+                <article
+                    class="metric-card"
+                    id="xpMetricCard"
+                >
+
+                    <div class="metric-glow"></div>
+
+                    <div class="metric-icon">
+
+                        <i class="fa-solid fa-medal"></i>
+
+                    </div>
+
+                    <div class="metric-content">
+
+                        <span class="metric-title">
+
+                            Total XP
+
+                        </span>
+
+                        <h2
+                            id="totalXPValue"
+                            class="metric-value"
+                        >
+
+                            0
+
+                        </h2>
+
+                        <div class="metric-footer">
+
+                            <span
+                                id="metricLevel"
+                                class="metric-indicator premium"
+                            >
+
+                                Level 1
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <!-- ============================== -->
+
+                <article
+                    class="metric-card"
+                    id="focusHoursCard"
+                >
+
+                    <div class="metric-glow"></div>
+
+                    <div class="metric-icon">
+
+                        <i class="fa-solid fa-clock"></i>
+
+                    </div>
+
+                    <div class="metric-content">
+
+                        <span class="metric-title">
+
+                            Focus Hours
+
+                        </span>
+
+                        <h2
+                            id="focusHoursValue"
+                            class="metric-value"
+                        >
+
+                            0h
+
+                        </h2>
+
+                        <div class="metric-footer">
+
+                            <span
+                                class="metric-indicator"
+                            >
+
+                                Tracked
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- ==========================================
+                DASHBOARD GRID
+                (Task Manager, Timer and Stopwatch
+                 will begin in Part 1A-2)
+            =========================================== -->
+
+            <section class="dashboard-grid">
+
+                <!-- Left Column -->
+
+                <section class="dashboard-column">
+
+                    <!-- Task Manager starts in Part 1A-2 -->
+
+                </section>
+
+                <!-- Right Column -->
+
+                <aside class="dashboard-column">
+
+                    <!-- Pomodoro & Stopwatch
+                         start in Part 1A-3 -->
+
+                </aside>
+
+            </section>
+                    <!-- =====================================================
+                        ADVANCED COMBAT TASK MANAGER
+                        PART 1A-2A
+                    ====================================================== -->
+
+                    <section
+                        id="taskManager"
+                        class="panel glass-panel task-manager-panel"
+                        aria-labelledby="taskManagerHeading"
+                    >
+
+                        <!-- ==========================================
+                            PANEL HEADER
+                        =========================================== -->
+
+                        <header class="panel-header">
+
+                            <div class="panel-title-group">
+
+                                <div class="panel-icon task-icon">
+
+                                    <i class="fa-solid fa-list-check"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <h2 id="taskManagerHeading"
+                                        class="panel-title">
+
+                                        Advanced Combat Tasks
+
+                                    </h2>
+
+                                    <p class="panel-description">
+
+                                        Organize, prioritize, filter and launch
+                                        deep-focus sessions with custom Pomodoro
+                                        presets.
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                            <!-- ====================================== -->
+
+                            <div class="panel-actions">
+
+                                <button
+                                    id="collapseTaskPanel"
+                                    class="icon-button"
+                                    type="button"
+                                    aria-label="Collapse Task Manager"
+                                >
+
+                                    <i class="fa-solid fa-chevron-up"></i>
+
+                                </button>
+
+                            </div>
+
+                        </header>
+
+                        <!-- ==========================================
+                            TOOLBAR
+                        =========================================== -->
+
+                        <section
+                            class="task-toolbar"
+                            aria-label="Task Toolbar"
+                        >
+
+                            <!-- ============================== -->
+
+                            <div class="toolbar-left">
+
+                                <!-- SEARCH -->
+
+                                <div class="search-box">
+
+                                    <i
+                                        class="fa-solid fa-magnifying-glass search-icon"
+                                    ></i>
+
+                                    <input
+                                        id="taskSearchInput"
+                                        class="search-input"
+                                        type="search"
+                                        autocomplete="off"
+                                        spellcheck="false"
+                                        placeholder="Search task name, category..."
+                                        aria-label="Search Tasks"
+                                    >
+
+                                    <button
+                                        id="clearSearchButton"
+                                        class="search-clear"
+                                        type="button"
+                                        aria-label="Clear Search"
+                                    >
+
+                                        <i class="fa-solid fa-xmark"></i>
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                            <!-- ============================== -->
+
+                            <div class="toolbar-right">
+
+                                <button
+                                    id="createTaskShortcut"
+                                    class="primary-button"
+                                    type="button"
+                                >
+
+                                    <i class="fa-solid fa-plus"></i>
+
+                                    <span>
+
+                                        New Task
+
+                                    </span>
+
+                                </button>
+
+                            </div>
+
+                        </section>
+
+                        <!-- ==========================================
+                            FILTER BAR
+                        =========================================== -->
+
+                        <section
+                            class="filter-section"
+                            aria-label="Task Filters"
+                        >
+
+                            <!-- ============================== -->
+
+                            <div class="filter-group">
+
+                                <span class="filter-label">
+
+                                    Status
+
+                                </span>
+
+                                <div
+                                    class="filter-chips"
+                                    role="group"
+                                    aria-label="Status Filters"
+                                >
+
+                                    <button
+                                        type="button"
+                                        class="filter-chip active"
+                                        data-status="all"
+                                    >
+
+                                        All
+
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="filter-chip"
+                                        data-status="active"
+                                    >
+
+                                        Active
+
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="filter-chip"
+                                        data-status="completed"
+                                    >
+
+                                        Completed
+
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="filter-chip"
+                                        data-status="focused"
+                                    >
+
+                                        Focusing
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                            <!-- ============================== -->
+
+                            <div class="filter-group">
+
+                                <span class="filter-label">
+
+                                    Priority
+
+                                </span>
+
+                                <div
+                                    class="filter-chips"
+                                    role="group"
+                                    aria-label="Priority Filters"
+                                >
+
+                                    <button
+                                        class="filter-chip active"
+                                        type="button"
+                                        data-priority="all"
+                                    >
+
+                                        All
+
+                                    </button>
+
+                                    <button
+                                        class="filter-chip critical"
+                                        type="button"
+                                        data-priority="critical"
+                                    >
+
+                                        Critical
+
+                                    </button>
+
+                                    <button
+                                        class="filter-chip medium"
+                                        type="button"
+                                        data-priority="medium"
+                                    >
+
+                                        Medium
+
+                                    </button>
+
+                                    <button
+                                        class="filter-chip low"
+                                        type="button"
+                                        data-priority="low"
+                                    >
+
+                                        Low
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+                        <!-- ==========================================
+                            ADVANCED CONTROLS
+                        =========================================== -->
+
+                        <section
+                            class="task-controls-grid"
+                            aria-label="Advanced Task Controls"
+                        >
+
+                            <!-- ============================== -->
+
+                            <div class="control-item">
+
+                                <label
+                                    class="control-label"
+                                    for="sortTasks"
+                                >
+
+                                    Sort By
+
+                                </label>
+
+                                <select
+                                    id="sortTasks"
+                                    class="modern-select"
+                                >
+
+                                    <option value="newest">
+
+                                        Newest First
+
+                                    </option>
+
+                                    <option value="oldest">
+
+                                        Oldest First
+
+                                    </option>
+
+                                    <option value="priority">
+
+                                        Priority
+
+                                    </option>
+
+                                    <option value="alphabetical">
+
+                                        Alphabetical
+
+                                    </option>
+
+                                    <option value="category">
+
+                                        Category
+
+                                    </option>
+
+                                    <option value="duration">
+
+                                        Session Length
+
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                            <!-- ============================== -->
+
+                            <div class="control-item">
+
+                                <label
+                                    class="control-label"
+                                    for="categoryFilter"
+                                >
+
+                                    Category
+
+                                </label>
+
+                                <select
+                                    id="categoryFilter"
+                                    class="modern-select"
+                                >
+
+                                    <option value="all">
+
+                                        All Categories
+
+                                    </option>
+
+                                    <option value="Coding">
+
+                                        Coding
+
+                                    </option>
+
+                                    <option value="Math">
+
+                                        Math
+
+                                    </option>
+
+                                    <option value="English">
+
+                                        English
+
+                                    </option>
+
+                                    <option value="Reading">
+
+                                        Reading
+
+                                    </option>
+
+                                    <option value="Study">
+
+                                        Study
+
+                                    </option>
+
+                                    <option value="Personal">
+
+                                        Personal
+
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                            <!-- ============================== -->
+
+                            <div class="control-item">
+
+                                <label
+                                    class="control-label"
+                                    for="viewMode"
+                                >
+
+                                    View
+
+                                </label>
+
+                                <select
+                                    id="viewMode"
+                                    class="modern-select"
+                                >
+
+                                    <option value="cards">
+
+                                        Card View
+
+                                    </option>
+
+                                    <option value="compact">
+
+                                        Compact View
+
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                            <!-- ============================== -->
+
+                            <div class="control-item">
+
+                                <label
+                                    class="control-label"
+                                    for="bulkAction"
+                                >
+
+                                    Bulk Actions
+
+                                </label>
+
+                                <select
+                                    id="bulkAction"
+                                    class="modern-select"
+                                >
+
+                                    <option value="">
+
+                                        Select Action
+
+                                    </option>
+
+                                    <option value="complete">
+
+                                        Complete Selected
+
+                                    </option>
+
+                                    <option value="delete">
+
+                                        Delete Selected
+
+                                    </option>
+
+                                    <option value="clearCompleted">
+
+                                        Clear Completed
+
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </section>
+
+                        <!-- =====================================================
+                            Task Creation Form begins in Part 1A-2B
+                        ====================================================== -->
+```
+                        <!-- =====================================================
+                            TASK CREATION FORM
+                            PART 1A-2B-1
+                            Continues directly after Part 1A-2A
+                        ====================================================== -->
+
+                        <section
+                            id="taskCreationSection"
+                            class="task-creation-section"
+                            aria-labelledby="taskCreationHeading"
+                        >
+
+                            <!-- ====================================== -->
+
+                            <header class="form-section-header">
+
+                                <div class="section-heading">
+
+                                    <div class="section-icon">
+
+                                        <i class="fa-solid fa-pen-to-square"></i>
+
+                                    </div>
+
+                                    <div>
+
+                                        <h3
+                                            id="taskCreationHeading"
+                                            class="section-title"
+                                        >
+
+                                            Create Mission
+
+                                        </h3>
+
+                                        <p class="section-subtitle">
+
+                                            Configure every detail before entering
+                                            focus mode.
+
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="form-mode-badge">
+
+                                    <span id="formModeBadge">
+
+                                        Create
+
+                                    </span>
+
+                                </div>
+
+                            </header>
+
+                            <!-- ====================================== -->
+
+                            <form
+                                id="taskForm"
+                                class="task-form"
+                                autocomplete="off"
+                                novalidate
+                            >
+
+                                <!-- Hidden values -->
+
+                                <input
+                                    type="hidden"
+                                    id="editingTaskId"
+                                >
+
+                                <input
+                                    type="hidden"
+                                    id="taskCreatedTimestamp"
+                                >
+
+                                <!-- ================================ -->
+
+                                <div class="form-grid">
+
+                                    <!-- =========================================
+                                        LEFT COLUMN
+                                    ========================================== -->
+
+                                    <section class="form-column">
+
+                                        <!-- ============================ -->
+
+                                        <div class="form-group">
+
+                                            <label
+                                                for="taskName"
+                                                class="form-label required"
+                                            >
+
+                                                Task Name
+
+                                            </label>
+
+                                            <div class="input-wrapper">
+
+                                                <i
+                                                    class="fa-solid fa-bullseye input-icon"
+                                                ></i>
+
+                                                <input
+                                                    id="taskName"
+                                                    class="modern-input"
+                                                    type="text"
+                                                    maxlength="120"
+                                                    placeholder="Example: Solve Dynamic Programming Problems"
+                                                    required
+                                                    spellcheck="false"
+                                                    aria-describedby="taskNameHelp"
+                                                >
+
+                                            </div>
+
+                                            <small
+                                                id="taskNameHelp"
+                                                class="helper-text"
+                                            >
+
+                                                Give your mission a clear,
+                                                actionable title.
+
+                                            </small>
+
+                                        </div>
+
+                                        <!-- ============================ -->
+
+                                        <div class="form-group">
+
+                                            <label
+                                                for="taskCategory"
+                                                class="form-label required"
+                                            >
+
+                                                Category
+
+                                            </label>
+
+                                            <div class="input-wrapper">
+
+                                                <i
+                                                    class="fa-solid fa-tags input-icon"
+                                                ></i>
+
+                                                <select
+                                                    id="taskCategory"
+                                                    class="modern-select"
+                                                >
+
+                                                    <option value="Coding">
+
+                                                        Coding
+
+                                                    </option>
+
+                                                    <option value="Math">
+
+                                                        Math
+
+                                                    </option>
+
+                                                    <option value="English">
+
+                                                        English
+
+                                                    </option>
+
+                                                    <option value="Reading">
+
+                                                        Reading
+
+                                                    </option>
+
+                                                    <option value="Research">
+
+                                                        Research
+
+                                                    </option>
+
+                                                    <option value="Design">
+
+                                                        Design
+
+                                                    </option>
+
+                                                    <option value="Writing">
+
+                                                        Writing
+
+                                                    </option>
+
+                                                    <option value="Workout">
+
+                                                        Workout
+
+                                                    </option>
+
+                                                    <option value="Personal">
+
+                                                        Personal
+
+                                                    </option>
+
+                                                    <option value="Custom">
+
+                                                        Custom...
+
+                                                    </option>
+
+                                                </select>
+
+                                            </div>
+
+                                        </div>
+
+                                        <!-- ============================ -->
+
+                                        <div
+                                            id="customCategoryWrapper"
+                                            class="form-group hidden"
+                                        >
+
+                                            <label
+                                                for="customCategory"
+                                                class="form-label"
+                                            >
+
+                                                Custom Category
+
+                                            </label>
+
+                                            <div class="input-wrapper">
+
+                                                <i
+                                                    class="fa-solid fa-hashtag input-icon"
+                                                ></i>
+
+                                                <input
+                                                    id="customCategory"
+                                                    class="modern-input"
+                                                    type="text"
+                                                    maxlength="40"
+                                                    placeholder="Example: SAT Math"
+                                                    spellcheck="false"
+                                                >
+
+                                            </div>
+
+                                            <small class="helper-text">
+
+                                                This tag will appear on the task
+                                                card and filters.
+
+                                            </small>
+
+                                        </div>
+
+                                    </section>
+
+                                    <!-- =========================================
+                                        RIGHT COLUMN
+                                    ========================================== -->
+
+                                    <section class="form-column">
+
+                                        <!-- ============================ -->
+
+                                        <div class="form-group">
+
+                                            <label
+                                                class="form-label required"
+                                            >
+
+                                                Priority Level
+
+                                            </label>
+
+                                            <div
+                                                class="priority-selector"
+                                                role="radiogroup"
+                                                aria-label="Priority Level"
+                                            >
+
+                                                <label
+                                                    class="priority-card critical"
+                                                >
+
+                                                    <input
+                                                        type="radio"
+                                                        name="priority"
+                                                        value="critical"
+                                                        checked
+                                                    >
+
+                                                    <span
+                                                        class="priority-indicator"
+                                                    ></span>
+
+                                                    <span
+                                                        class="priority-title"
+                                                    >
+
+                                                        Critical
+
+                                                    </span>
+
+                                                    <small>
+
+                                                        Highest focus
+
+                                                    </small>
+
+                                                </label>
+
+                                                <label
+                                                    class="priority-card medium"
+                                                >
+
+                                                    <input
+                                                        type="radio"
+                                                        name="priority"
+                                                        value="medium"
+                                                    >
+
+                                                    <span
+                                                        class="priority-indicator"
+                                                    ></span>
+
+                                                    <span
+                                                        class="priority-title"
+                                                    >
+
+                                                        Medium
+
+                                                    </span>
+
+                                                    <small>
+
+                                                        Balanced
+
+                                                    </small>
+
+                                                </label>
+
+                                                <label
+                                                    class="priority-card low"
+                                                >
+
+                                                    <input
+                                                        type="radio"
+                                                        name="priority"
+                                                        value="low"
+                                                    >
+
+                                                    <span
+                                                        class="priority-indicator"
+                                                    ></span>
+
+                                                    <span
+                                                        class="priority-title"
+                                                    >
+
+                                                        Low
+
+                                                    </span>
+
+                                                    <small>
+
+                                                        Flexible
+
+                                                    </small>
+
+                                                </label>
+
+                                            </div>
+
+                                        </div>
+
+                                        <!-- ============================ -->
+
+                                        <div class="form-group">
+
+                                            <label
+                                                for="taskDescription"
+                                                class="form-label"
+                                            >
+
+                                                Notes / Description
+
+                                            </label>
+
+                                            <textarea
+                                                id="taskDescription"
+                                                class="modern-textarea"
+                                                rows="6"
+                                                maxlength="500"
+                                                placeholder="Objectives, reminders, formulas, links, acceptance criteria..."
+                                            ></textarea>
+
+                                            <div class="textarea-footer">
+
+                                                <small class="helper-text">
+
+                                                    Optional but useful for long
+                                                    focus sessions.
+
+                                                </small>
+
+                                                <small
+                                                    id="descriptionCounter"
+                                                    class="character-counter"
+                                                >
+
+                                                    0 / 500
+
+                                                </small>
+
+                                            </div>
+
+                                        </div>
+
+                                    </section>
+
+                                </div>
+
+                                <!-- =====================================================
+                                    Pomodoro Presets begin in Part 1A-2B-2
+                                ====================================================== -->
+                                <!-- =====================================================
+                                    POMODORO CONFIGURATION
+                                    PART 1A-2B-2A
+                                    Continues directly after Part 1A-2B-1
+                                ====================================================== -->
+
+                                <section
+                                    class="session-config-section"
+                                    aria-labelledby="sessionConfigurationHeading"
+                                >
+
+                                    <!-- ====================================== -->
+
+                                    <header class="subsection-header">
+
+                                        <div class="subsection-title-group">
+
+                                            <div class="subsection-icon">
+
+                                                <i class="fa-solid fa-clock"></i>
+
+                                            </div>
+
+                                            <div>
+
+                                                <h3
+                                                    id="sessionConfigurationHeading"
+                                                    class="subsection-title"
+                                                >
+
+                                                    Focus Session Configuration
+
+                                                </h3>
+
+                                                <p class="subsection-description">
+
+                                                    Select a proven Pomodoro
+                                                    workflow or create your own
+                                                    personalized focus cycle.
+
+                                                </p>
+
+                                            </div>
+
+                                        </div>
+
+                                    </header>
+
+                                    <!-- ======================================
+                                        PRESETS
+                                    ======================================= -->
+
+                                    <fieldset
+                                        class="preset-selector"
+                                        aria-labelledby="presetLegend"
+                                    >
+
+                                        <legend
+                                            id="presetLegend"
+                                            class="form-label required"
+                                        >
+
+                                            Pomodoro Preset
+
+                                        </legend>
+
+                                        <div class="preset-grid">
+
+                                            <!-- ========================== -->
+
+                                            <label
+                                                class="preset-card active"
+                                            >
+
+                                                <input
+                                                    type="radio"
+                                                    name="pomodoroPreset"
+                                                    value="25-5"
+                                                    checked
+                                                >
+
+                                                <div class="preset-top">
+
+                                                    <span class="preset-badge">
+
+                                                        Classic
+
+                                                    </span>
+
+                                                </div>
+
+                                                <h4>
+
+                                                    25 / 5
+
+                                                </h4>
+
+                                                <p>
+
+                                                    25 min focus
+                                                    <br>
+                                                    5 min break
+
+                                                </p>
+
+                                            </label>
+
+                                            <!-- ========================== -->
+
+                                            <label
+                                                class="preset-card"
+                                            >
+
+                                                <input
+                                                    type="radio"
+                                                    name="pomodoroPreset"
+                                                    value="50-10"
+                                                >
+
+                                                <div class="preset-top">
+
+                                                    <span class="preset-badge premium">
+
+                                                        Deep Work
+
+                                                    </span>
+
+                                                </div>
+
+                                                <h4>
+
+                                                    50 / 10
+
+                                                </h4>
+
+                                                <p>
+
+                                                    Longer uninterrupted
+                                                    concentration
+
+                                                </p>
+
+                                            </label>
+
+                                            <!-- ========================== -->
+
+                                            <label
+                                                class="preset-card"
+                                            >
+
+                                                <input
+                                                    type="radio"
+                                                    name="pomodoroPreset"
+                                                    value="90-20"
+                                                >
+
+                                                <div class="preset-top">
+
+                                                    <span class="preset-badge elite">
+
+                                                        Flow
+
+                                                    </span>
+
+                                                </div>
+
+                                                <h4>
+
+                                                    90 / 20
+
+                                                </h4>
+
+                                                <p>
+
+                                                    Natural ultradian
+                                                    rhythm cycle
+
+                                                </p>
+
+                                            </label>
+
+                                            <!-- ========================== -->
+
+                                            <label
+                                                class="preset-card custom-card"
+                                            >
+
+                                                <input
+                                                    type="radio"
+                                                    name="pomodoroPreset"
+                                                    value="custom"
+                                                >
+
+                                                <div class="preset-top">
+
+                                                    <span class="preset-badge custom">
+
+                                                        Custom
+
+                                                    </span>
+
+                                                </div>
+
+                                                <h4>
+
+                                                    Your Own
+
+                                                </h4>
+
+                                                <p>
+
+                                                    Fully configurable
+                                                    session
+
+                                                </p>
+
+                                            </label>
+
+                                        </div>
+
+                                    </fieldset>
+
+                                    <!-- ======================================
+                                        CUSTOM DURATION
+                                    ======================================= -->
+
+                                    <section
+                                        id="customDurationSection"
+                                        class="custom-duration-section"
+                                        aria-labelledby="customDurationHeading"
+                                    >
+
+                                        <header class="mini-header">
+
+                                            <h4
+                                                id="customDurationHeading"
+                                            >
+
+                                                Custom Duration
+
+                                            </h4>
+
+                                            <p>
+
+                                                Enabled automatically when
+                                                "Custom" preset is selected.
+
+                                            </p>
+
+                                        </header>
+
+                                        <div class="duration-grid">
+
+                                            <!-- ========================== -->
+
+                                            <div class="form-group">
+
+                                                <label
+                                                    for="focusMinutes"
+                                                    class="form-label required"
+                                                >
+
+                                                    Focus Minutes
+
+                                                </label>
+
+                                                <div class="number-input">
+
+                                                    <button
+                                                        type="button"
+                                                        class="number-step"
+                                                        data-target="focusMinutes"
+                                                        data-action="decrease"
+                                                    >
+
+                                                        <i class="fa-solid fa-minus"></i>
+
+                                                    </button>
+
+                                                    <input
+                                                        id="focusMinutes"
+                                                        type="number"
+                                                        class="modern-input"
+                                                        value="25"
+                                                        min="5"
+                                                        max="180"
+                                                        step="5"
+                                                    >
+
+                                                    <button
+                                                        type="button"
+                                                        class="number-step"
+                                                        data-target="focusMinutes"
+                                                        data-action="increase"
+                                                    >
+
+                                                        <i class="fa-solid fa-plus"></i>
+
+                                                    </button>
+
+                                                </div>
+
+                                            </div>
+
+                                            <!-- ========================== -->
+
+                                            <div class="form-group">
+
+                                                <label
+                                                    for="breakMinutes"
+                                                    class="form-label required"
+                                                >
+
+                                                    Break Minutes
+
+                                                </label>
+
+                                                <div class="number-input">
+
+                                                    <button
+                                                        type="button"
+                                                        class="number-step"
+                                                        data-target="breakMinutes"
+                                                        data-action="decrease"
+                                                    >
+
+                                                        <i class="fa-solid fa-minus"></i>
+
+                                                    </button>
+
+                                                    <input
+                                                        id="breakMinutes"
+                                                        type="number"
+                                                        class="modern-input"
+                                                        value="5"
+                                                        min="1"
+                                                        max="60"
+                                                        step="1"
+                                                    >
+
+                                                    <button
+                                                        type="button"
+                                                        class="number-step"
+                                                        data-target="breakMinutes"
+                                                        data-action="increase"
+                                                    >
+
+                                                        <i class="fa-solid fa-plus"></i>
+
+                                                    </button>
+
+                                                </div>
+
+                                            </div>
+
+                                            <!-- ========================== -->
+
+                                            <div class="form-group">
+
+                                                <label
+                                                    for="longBreakMinutes"
+                                                    class="form-label"
+                                                >
+
+                                                    Long Break
+
+                                                </label>
+
+                                                <div class="number-input">
+
+                                                    <button
+                                                        type="button"
+                                                        class="number-step"
+                                                        data-target="longBreakMinutes"
+                                                        data-action="decrease"
+                                                    >
+
+                                                        <i class="fa-solid fa-minus"></i>
+
+                                                    </button>
+
+                                                    <input
+                                                        id="longBreakMinutes"
+                                                        type="number"
+                                                        class="modern-input"
+                                                        value="20"
+                                                        min="5"
+                                                        max="90"
+                                                        step="5"
+                                                    >
+
+                                                    <button
+                                                        type="button"
+                                                        class="number-step"
+                                                        data-target="longBreakMinutes"
+                                                        data-action="increase"
+                                                    >
+
+                                                        <i class="fa-solid fa-plus"></i>
+
+                                                    </button>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </section>
+
+                                    <!-- ======================================
+                                        SESSION OPTIONS
+                                    ======================================= -->
+
+                                    <section
+                                        class="session-options-grid"
+                                        aria-label="Session Options"
+                                    >
+
+                                        <label class="toggle-card">
+
+                                            <input
+                                                type="checkbox"
+                                                id="autoCycle"
+                                                checked
+                                            >
+
+                                            <span class="toggle-switch"></span>
+
+                                            <div class="toggle-content">
+
+                                                <strong>
+
+                                                    Auto Cycle
+
+                                                </strong>
+
+                                                <small>
+
+                                                    Automatically start the next
+                                                    work or break session.
+
+                                                </small>
+
+                                            </div>
+
+                                        </label>
+
+                                        <label class="toggle-card">
+
+                                            <input
+                                                type="checkbox"
+                                                id="enableLongBreak"
+                                                checked
+                                            >
+
+                                            <span class="toggle-switch"></span>
+
+                                            <div class="toggle-content">
+
+                                                <strong>
+
+                                                    Long Break
+
+                                                </strong>
+
+                                                <small>
+
+                                                    Replace every fourth break
+                                                    with the configured long
+                                                    break duration.
+
+                                                </small>
+
+                                            </div>
+
+                                        </label>
+
+                                        <label class="toggle-card">
+
+                                            <input
+                                                type="checkbox"
+                                                id="startFocusImmediately"
+                                            >
+
+                                            <span class="toggle-switch"></span>
+
+                                            <div class="toggle-content">
+
+                                                <strong>
+
+                                                    Instant Focus
+
+                                                </strong>
+
+                                                <small>
+
+                                                    Launch the timer immediately
+                                                    after creating this task.
+
+                                                </small>
+
+                                            </div>
+
+                                        </label>
+
+                                    </section>
+
+                                    <!-- =====================================================
+                                        Validation & Action Toolbar begin in Part 1A-2B-2B
+                                    ====================================================== -->
+                <!-- ============================= -->
+                <!-- Validation / Feedback Area -->
+                <!-- ============================= -->
+                <div class="form-feedback" id="taskFormFeedback" aria-live="polite">
+
+                    <div class="feedback-message success hidden" id="taskSuccessMessage">
+                        <span class="feedback-icon">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </span>
+                        <span class="feedback-text">
+                            Task saved successfully.
+                        </span>
+                    </div>
+
+                    <div class="feedback-message error hidden" id="taskErrorMessage">
+                        <span class="feedback-icon">
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                        </span>
+                        <span class="feedback-text">
+                            Please complete all required fields.
+                        </span>
+                    </div>
+
+                    <div class="feedback-message warning hidden" id="taskWarningMessage">
+                        <span class="feedback-icon">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </span>
+                        <span class="feedback-text">
+                            Some settings may affect your schedule.
+                        </span>
+                    </div>
+
+                </div>
+
+                <!-- ============================= -->
+                <!-- Form Action Buttons -->
+                <!-- ============================= -->
+                <div class="task-form-actions">
+
+                    <div class="left-actions">
+
+                        <button
+                            type="button"
+                            class="btn btn-outline"
+                            id="resetTaskForm">
+
+                            <i class="fa-solid fa-arrow-rotate-left"></i>
+                            <span>Reset</span>
+
+                        </button>
+
+                        <button
+                            type="button"
+                            class="btn btn-ghost"
+                            id="duplicateTaskButton">
+
+                            <i class="fa-regular fa-copy"></i>
+                            <span>Duplicate</span>
+
+                        </button>
+
+                    </div>
+
+                    <div class="right-actions">
+
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            id="cancelTaskButton">
+
+                            <i class="fa-solid fa-xmark"></i>
+                            <span>Cancel</span>
+
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                            id="saveTaskButton">
+
+                            <i class="fa-solid fa-floppy-disk"></i>
+                            <span>Save Task</span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- ============================= -->
+                <!-- Hidden Helper Fields -->
+                <!-- ============================= -->
+
+                <input
+                    type="hidden"
+                    id="taskId"
+                    name="taskId"
+                    value="">
+
+                <input
+                    type="hidden"
+                    id="editingMode"
+                    name="editingMode"
+                    value="false">
+
+                <input
+                    type="hidden"
+                    id="taskCreatedAt"
+                    name="taskCreatedAt"
+                    value="">
+
+                <input
+                    type="hidden"
+                    id="taskUpdatedAt"
+                    name="taskUpdatedAt"
+                    value="">
+
+                <input
+                    type="hidden"
+                    id="taskOrder"
+                    name="taskOrder"
+                    value="0">
+
+                <input
+                    type="hidden"
+                    id="taskStatus"
+                    name="taskStatus"
+                    value="pending">
+
+                <input
+                    type="hidden"
+                    id="taskCompleted"
+                    name="taskCompleted"
+                    value="false">
+
+                <input
+                    type="hidden"
+                    id="originalPomodoroPreset"
+                    name="originalPomodoroPreset"
+                    value="">
+
+                <input
+                    type="hidden"
+                    id="selectedTheme"
+                    name="selectedTheme"
+                    value="default">
+
+                <input
+                    type="hidden"
+                    id="selectedProjectId"
+                    name="selectedProjectId"
+                    value="">
+
+                <input
+                    type="hidden"
+                    id="taskMetadata"
+                    name="taskMetadata"
+                    value="">
+
+            </form>
+
+        </section>
+
+        <!-- ============================================== -->
+        <!-- End: Task Creation / Editing Section -->
+        <!-- ============================================== -->
+
+        <!-- ===================================================== -->
+        <!-- CONTINUATION -->
+        <!-- Next Section: Dashboard Overview / Statistics Cards -->
+        <!-- Part 1A-3A -->
+        <!-- ===================================================== -->
+        <!-- ===================================================== -->
+        <!-- Part 1A-2C -->
+        <!-- Task List -->
+        <!-- ===================================================== -->
+
+        <section
+            class="task-list-section"
+            id="taskListSection">
+
+            <!-- ============================= -->
+            <!-- Section Header -->
+            <!-- ============================= -->
+
+            <div class="section-header">
+
+                <div class="section-title-group">
+
+                    <h2 class="section-title">
+                        <i class="fa-solid fa-list-check"></i>
+                        <span>Tasks</span>
+                    </h2>
+
+                    <p class="section-subtitle">
+                        Organize, prioritize and complete your work efficiently.
+                    </p>
+
+                </div>
+
+                <div class="task-count-wrapper">
+
+                    <span class="task-counter-label">
+                        Total
+                    </span>
+
+                    <span
+                        class="task-counter"
+                        id="taskCounter">
+
+                        0
+
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- ============================= -->
+            <!-- Task List Container -->
+            <!-- ============================= -->
+
+            <div
+                class="task-list"
+                id="taskList">
+
+                <!-- Dynamic task cards will be injected here -->
+
+            </div>
+
+            <!-- ============================= -->
+            <!-- Task Card Template -->
+            <!-- ============================= -->
+
+            <template id="taskCardTemplate">
+
+                <article
+                    class="task-card"
+                    data-task-id="">
+
+                    <!-- Left -->
+
+                    <div class="task-card-left">
+
+                        <label class="task-checkbox">
+
+                            <input
+                                type="checkbox"
+                                class="task-complete-checkbox">
+
+                            <span class="checkmark"></span>
+
+                        </label>
+
+                    </div>
+
+                    <!-- Center -->
+
+                    <div class="task-card-content">
+
+                        <div class="task-card-header">
+
+                            <h3 class="task-title">
+                                Sample Task
+                            </h3>
+
+                            <div class="task-priority priority-medium">
+
+                                <i class="fa-solid fa-flag"></i>
+
+                                <span>
+                                    Medium
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <p class="task-description">
+                            Short task description goes here.
+                        </p>
+
+                        <div class="task-meta">
+
+                            <span class="meta-item">
+
+                                <i class="fa-regular fa-folder"></i>
+
+                                <span class="task-project">
+                                    General
+                                </span>
+
+                            </span>
+
+                            <span class="meta-item">
+
+                                <i class="fa-regular fa-calendar"></i>
+
+                                <span class="task-date">
+                                    Today
+                                </span>
+
+                            </span>
+
+                            <span class="meta-item">
+
+                                <i class="fa-solid fa-clock"></i>
+
+                                <span class="task-time">
+                                    25 min
+                                </span>
+
+                            </span>
+
+                            <span class="meta-item">
+
+                                <i class="fa-solid fa-tag"></i>
+
+                                <span class="task-category">
+                                    Focus
+                                </span>
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Right -->
+
+                    <div class="task-card-actions">
+
+                        <button
+                            class="icon-button edit-task"
+                            type="button"
+                            title="Edit">
+
+                            <i class="fa-regular fa-pen-to-square"></i>
+
+                        </button>
+
+                        <button
+                            class="icon-button duplicate-task"
+                            type="button"
+                            title="Duplicate">
+
+                            <i class="fa-regular fa-copy"></i>
+
+                        </button>
+
+                        <button
+                            class="icon-button delete-task"
+                            type="button"
+                            title="Delete">
+
+                            <i class="fa-regular fa-trash-can"></i>
+
+                        </button>
+
+                    </div>
+
+                </article>
+
+            </template>
+
+            <!-- ============================= -->
+            <!-- Skeleton Loading -->
+            <!-- ============================= -->
+
+            <div
+                class="task-skeleton-list hidden"
+                id="taskSkeletonList">
+
+                <div class="task-skeleton"></div>
+                <div class="task-skeleton"></div>
+                <div class="task-skeleton"></div>
+                <div class="task-skeleton"></div>
+                <div class="task-skeleton"></div>
+
+            </div>
+
+            <!-- ============================= -->
+            <!-- Empty State -->
+            <!-- ============================= -->
+
+            <div
+                class="empty-task-state hidden"
+                id="emptyTaskState">
+
+                <div class="empty-state-icon">
+
+                    <i class="fa-regular fa-clipboard"></i>
+
+                </div>
+
+                <h3>
+                    No Tasks Yet
+                </h3>
+
+                <p>
+
+                    Your workspace is empty.
+                    Create your first task to start building momentum.
+
+                </p>
+
+                <button
+                    class="btn btn-primary"
+                    id="createFirstTaskButton"
+                    type="button">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    <span>
+                        Create First Task
+                    </span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- ============================================== -->
+        <!-- End: Task List Section -->
+        <!-- ============================================== -->
+
+        <!-- ===================================================== -->
+        <!-- CONTINUATION -->
+        <!-- Next: Part 1A-3A -->
+        <!-- Dashboard Statistics / Overview Cards -->
+        <!-- ===================================================== -->
+        <!-- ===================================================== -->
+        <!-- Part 1A-3 -->
+        <!-- Premium Timer / Stopwatch Interface -->
+        <!-- ===================================================== -->
+
+        <section
+            class="timer-section"
+            id="timerSection">
+
+            <!-- ============================= -->
+            <!-- Section Header -->
+            <!-- ============================= -->
+
+            <div class="section-header">
+
+                <div class="section-title-group">
+
+                    <h2 class="section-title">
+                        <i class="fa-solid fa-stopwatch"></i>
+                        <span>Focus Timer</span>
+                    </h2>
+
+                    <p class="section-subtitle">
+                        Stay focused with Pomodoro sessions or use a free stopwatch.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- ============================= -->
+            <!-- Mode Toggle -->
+            <!-- ============================= -->
+
+            <div
+                class="timer-mode-switch"
+                id="timerModeSwitch">
+
+                <button
+                    type="button"
+                    class="mode-button active"
+                    id="pomodoroModeButton"
+                    data-mode="pomodoro">
+
+                    <i class="fa-solid fa-brain"></i>
+                    <span>Task Pomodoro</span>
+
+                </button>
+
+                <button
+                    type="button"
+                    class="mode-button"
+                    id="stopwatchModeButton"
+                    data-mode="stopwatch">
+
+                    <i class="fa-solid fa-stopwatch"></i>
+                    <span>Free Stopwatch</span>
+
+                </button>
+
+            </div>
+
+            <!-- ============================= -->
+            <!-- Active Task -->
+            <!-- ============================= -->
+
+            <div
+                class="timer-active-task"
+                id="timerActiveTask">
+
+                <span class="task-label">
+                    Current Task
+                </span>
+
+                <h3 id="currentTimerTask">
+                    No task selected
+                </h3>
+
+                <div class="timer-session-badge focus-session">
+
+                    <i class="fa-solid fa-fire"></i>
+
+                    <span id="sessionStateLabel">
+                        Focus Session
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- ============================= -->
+            <!-- Main Timer -->
+            <!-- ============================= -->
+
+            <div
+                class="timer-display-wrapper"
+                id="timerDisplayWrapper">
+
+                <div class="timer-progress-ring">
+
+                    <svg
+                        class="progress-svg"
+                        viewBox="0 0 220 220">
+
+                        <circle
+                            class="progress-track"
+                            cx="110"
+                            cy="110"
+                            r="96">
+                        </circle>
+
+                        <circle
+                            class="progress-value"
+                            id="timerProgressCircle"
+                            cx="110"
+                            cy="110"
+                            r="96">
+                        </circle>
+
+                    </svg>
+
+                    <div class="timer-display">
+
+                        <span
+                            class="timer-mode-label"
+                            id="timerModeLabel">
+
+                            Focus
+
+                        </span>
+
+                        <h1
+                            class="countdown-time"
+                            id="countdownDisplay">
+
+                            25:00
+
+                        </h1>
+
+                        <span
+                            class="timer-status"
+                            id="timerStatus">
+
+                            Ready to start
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ============================= -->
+            <!-- Session Progress -->
+            <!-- ============================= -->
+
+            <div
+                class="session-progress-panel"
+                id="sessionProgressPanel">
+
+                <div class="progress-info">
+
+                    <span>
+                        Session
+                    </span>
+
+                    <strong id="sessionCounter">
+
+                        1 / 4
+
+                    </strong>
+
+                </div>
+
+                <div class="progress-bar">
+
+                    <div
+                        class="progress-fill"
+                        id="sessionProgressFill">
+
+                    </div>
+
+                </div>
+
+                <div class="progress-labels">
+
+                    <span id="elapsedTime">
+                        00:00
+                    </span>
+
+                    <span id="remainingTime">
+                        25:00
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- ============================= -->
+            <!-- Pomodoro Cycle -->
+            <!-- ============================= -->
+
+            <div
+                class="pomodoro-cycle"
+                id="pomodoroCycle">
+
+                <div class="cycle-step active">
+                    Focus
+                </div>
+
+                <div class="cycle-step">
+                    Short Break
+                </div>
+
+                <div class="cycle-step">
+                    Focus
+                </div>
+
+                <div class="cycle-step">
+                    Long Break
+                </div>
+
+            </div>
+
+            <!-- ============================= -->
+            <!-- Controls -->
+            <!-- ============================= -->
+
+            <div
+                class="timer-controls"
+                id="timerControls">
+
+                <button
+                    type="button"
+                    class="circle-button secondary"
+                    id="resetTimerButton"
+                    title="Reset">
+
+                    <i class="fa-solid fa-rotate-left"></i>
+
+                </button>
+
+                <button
+                    type="button"
+                    class="circle-button primary"
+                    id="playPauseButton"
+                    title="Play">
+
+                    <i
+                        class="fa-solid fa-play"
+                        id="playPauseIcon">
+                    </i>
+
+                </button>
+
+                <button
+                    type="button"
+                    class="circle-button secondary"
+                    id="pauseTimerButton"
+                    title="Pause">
+
+                    <i class="fa-solid fa-pause"></i>
+
+                </button>
+
+            </div>
+
+            <!-- ============================= -->
+            <!-- Session Actions -->
+            <!-- ============================= -->
+
+            <div
+                class="timer-session-actions"
+                id="timerSessionActions">
+
+                <button
+                    type="button"
+                    class="btn btn-outline"
+                    id="skipBreakButton">
+
+                    <i class="fa-solid fa-forward-step"></i>
+
+                    <span>
+                        Skip Break
+                    </span>
+
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    id="skipSessionButton">
+
+                    <i class="fa-solid fa-forward"></i>
+
+                    <span>
+                        Skip Session
+                    </span>
+
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                    id="completeSessionButton">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    <span>
+                        Finish Early
+                    </span>
+
+                </button>
+
+            </div>
+
+            <!-- ============================= -->
+            <!-- Next Transition -->
+            <!-- ============================= -->
+
+            <div
+                class="timer-transition-card hidden"
+                id="timerTransitionCard">
+
+                <div class="transition-icon">
+
+                    <i class="fa-solid fa-arrows-rotate"></i>
+
+                </div>
+
+                <div class="transition-content">
+
+                    <h3 id="transitionTitle">
+                        Session Complete
+                    </h3>
+
+                    <p id="transitionDescription">
+                        Ready to start your next break.
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                    id="startNextSessionButton">
+
+                    <i class="fa-solid fa-play"></i>
+
+                    <span>
+                        Start Next Session
+                    </span>
+
+                </button>
+
+            </div>
+
+            <!-- ============================= -->
+            <!-- Hidden Helper Fields -->
+            <!-- ============================= -->
+
+            <input
+                type="hidden"
+                id="timerCurrentMode"
+                value="pomodoro">
+
+            <input
+                type="hidden"
+                id="timerCurrentPhase"
+                value="focus">
+
+            <input
+                type="hidden"
+                id="timerRunningState"
+                value="false">
+
+            <input
+                type="hidden"
+                id="currentSessionIndex"
+                value="1">
+
+            <input
+                type="hidden"
+                id="currentTaskId"
+                value="">
+
+        </section>
+
+        <!-- ============================================== -->
+        <!-- End: Premium Timer Interface -->
+        <!-- ============================================== -->
+
+        <!-- ===================================================== -->
+        <!-- CONTINUATION -->
+        <!-- Next: Part 1A-4 -->
+        <!-- Dashboard Statistics / Analytics Cards -->
+        <!-- ===================================================== -->
+        <!-- ===================================================== -->
+        <!-- Part 1B -->
+        <!-- Statistics • Settings • Modals • Toasts -->
+        <!-- ===================================================== -->
+
+        <!-- ============================================= -->
+        <!-- Weekly Statistics -->
+        <!-- ============================================= -->
+
+        <section
+            class="statistics-section"
+            id="statisticsSection">
+
+            <div class="section-header">
+
+                <div class="section-title-group">
+
+                    <h2 class="section-title">
+                        <i class="fa-solid fa-chart-column"></i>
+                        <span>Weekly Statistics</span>
+                    </h2>
+
+                    <p class="section-subtitle">
+                        Visualize your focus and productivity.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="statistics-card">
+
+                <div class="chart-toolbar">
+
+                    <select id="chartRange">
+
+                        <option value="7">Last 7 Days</option>
+                        <option value="30">Last 30 Days</option>
+                        <option value="365">This Year</option>
+
+                    </select>
+
+                    <button
+                        type="button"
+                        class="icon-button"
+                        id="refreshChartButton">
+
+                        <i class="fa-solid fa-rotate"></i>
+
+                    </button>
+
+                </div>
+
+                <!-- Native Canvas -->
+                <div class="chart-container">
+
+                    <canvas
+                        id="weeklyStatisticsChart"
+                        aria-label="Weekly Productivity Chart">
+                    </canvas>
+
+                </div>
+
+                <div class="chart-summary">
+
+                    <div class="summary-item">
+
+                        <strong id="weekFocusHours">0h</strong>
+
+                        <span>Focus Time</span>
+
+                    </div>
+
+                    <div class="summary-item">
+
+                        <strong id="weekCompletedTasks">0</strong>
+
+                        <span>Completed</span>
+
+                    </div>
+
+                    <div class="summary-item">
+
+                        <strong id="weekSessions">0</strong>
+
+                        <span>Pomodoros</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ============================================= -->
+        <!-- Settings -->
+        <!-- ============================================= -->
+
+        <section
+            class="settings-section"
+            id="settingsSection">
+
+            <div class="section-header">
+
+                <h2 class="section-title">
+
+                    <i class="fa-solid fa-gear"></i>
+
+                    <span>Settings</span>
+
+                </h2>
+
+            </div>
+
+            <div class="settings-card">
+
+                <div class="setting-group">
+
+                    <label for="themeSelect">
+
+                        Theme
+
+                    </label>
+
+                    <select id="themeSelect">
+
+                        <option value="system">System</option>
+                        <option value="dark">Dark</option>
+                        <option value="light">Light</option>
+
+                    </select>
+
+                </div>
+
+                <div class="setting-group">
+
+                    <label for="backgroundUrl">
+
+                        Background Image URL
+
+                    </label>
+
+                    <div class="inline-setting">
+
+                        <input
+                            type="url"
+                            id="backgroundUrl"
+                            placeholder="https://example.com/image.jpg">
+
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            id="applyBackgroundButton">
+
+                            Apply
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="setting-group">
+
+                    <label for="backgroundUpload">
+
+                        Upload Background
+
+                    </label>
+
+                    <input
+                        type="file"
+                        id="backgroundUpload"
+                        accept="image/*">
+
+                </div>
+
+                <div class="setting-group">
+
+                    <label>
+
+                        Background Preview
+
+                    </label>
+
+                    <div
+                        class="background-preview"
+                        id="backgroundPreview">
+
+                    </div>
+
+                </div>
+
+                <div class="setting-actions">
+
+                    <button
+                        type="button"
+                        class="btn btn-outline"
+                        id="removeBackgroundButton">
+
+                        Remove Background
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        id="saveSettingsButton">
+
+                        Save Settings
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ============================================= -->
+        <!-- Confirmation Modal -->
+        <!-- ============================================= -->
+
+        <div
+            class="modal hidden"
+            id="confirmModal">
+
+            <div class="modal-overlay"></div>
+
+            <div
+                class="modal-content"
+                role="dialog"
+                aria-modal="true">
+
+                <div class="modal-header">
+
+                    <h3 id="confirmModalTitle">
+
+                        Confirmation
+
+                    </h3>
+
+                    <button
+                        class="icon-button"
+                        id="closeConfirmModal">
+
+                        <i class="fa-solid fa-xmark"></i>
+
+                    </button>
+
+                </div>
+
+                <div
+                    class="modal-body"
+                    id="confirmModalMessage">
+
+                    Are you sure?
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <button
+                        class="btn btn-outline"
+                        id="cancelConfirmButton">
+
+                        Cancel
+
+                    </button>
+
+                    <button
+                        class="btn btn-primary"
+                        id="confirmActionButton">
+
+                        Confirm
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ============================================= -->
+        <!-- Generic Modal -->
+        <!-- ============================================= -->
+
+        <div
+            class="modal hidden"
+            id="genericModal">
+
+            <div class="modal-overlay"></div>
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h3 id="genericModalTitle">
+
+                        Information
+
+                    </h3>
+
+                    <button
+                        class="icon-button"
+                        id="closeGenericModal">
+
+                        <i class="fa-solid fa-xmark"></i>
+
+                    </button>
+
+                </div>
+
+                <div
+                    class="modal-body"
+                    id="genericModalBody">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ============================================= -->
+        <!-- Toast Container -->
+        <!-- ============================================= -->
+
+        <div
+            class="toast-container"
+            id="toastContainer">
+
+            <div
+                class="toast success hidden"
+                id="successToast">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                <span class="toast-message">
+
+                    Success
+
+                </span>
+
+            </div>
+
+            <div
+                class="toast error hidden"
+                id="errorToast">
+
+                <i class="fa-solid fa-circle-xmark"></i>
+
+                <span class="toast-message">
+
+                    Something went wrong.
+
+                </span>
+
+            </div>
+
+            <div
+                class="toast warning hidden"
+                id="warningToast">
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                <span class="toast-message">
+
+                    Warning
+
+                </span>
+
+            </div>
+
+            <div
+                class="toast info hidden"
+                id="infoToast">
+
+                <i class="fa-solid fa-circle-info"></i>
+
+                <span class="toast-message">
+
+                    Information
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <!-- ============================================= -->
+        <!-- Global Hidden Helpers -->
+        <!-- ============================================= -->
+
+        <input
+            type="hidden"
+            id="applicationState"
+            value="ready">
+
+        <input
+            type="hidden"
+            id="activeTheme"
+            value="system">
+
+        <input
+            type="hidden"
+            id="backgroundType"
+            value="default">
+
+        <input
+            type="hidden"
+            id="activeModal"
+            value="">
+
+    </main>
+
+    <!-- ============================================= -->
+    <!-- Application Loader -->
+    <!-- ============================================= -->
+
+    <div
+        class="page-loader"
+        id="pageLoader">
+
+        <div class="loader-spinner"></div>
+
+        <span>Loading Dashboard...</span>
+
+    </div>
+
+    <!-- ============================================= -->
+    <!-- Scripts -->
+    <!-- ============================================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
